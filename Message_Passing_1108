@@ -1,0 +1,78 @@
+class Factory {
+	int stock =0;
+	int inventoryholdingcost=0;
+	
+	public Factory(int stock) {
+		this.stock = stock;
+	}
+	
+	void show() {
+		inventoryholdingcost = stock*10;
+		System.out.println("공장의 현재 재고 : " + stock);
+		System.out.println("공장의 현재 재고처리비용 : " + inventoryholdingcost);
+	}
+
+	
+	
+	
+}
+
+
+ class Customer{
+	private int have =0;
+	private double satisfaction =0;
+	
+	
+	
+	public Customer(int have) {
+		this.have = have;
+	}
+
+	void show() {
+		System.out.println("고객의 현재보유량 : " + have);
+		System.out.println("고객의 현재 만족도 : " + satisfaction + "%");
+	}
+	
+	 void order(int a, Factory sam) {
+		 if(sam.stock<a) {
+			 System.out.println("재고없음");
+			 satisfaction = -100.0;}
+		 else{
+			 have = have+a;
+			 sam.stock -= a;
+			 satisfaction = 1.0/(double)(a*0.1)*100;}
+		 
+		
+		
+		
+		}
+		
+	}
+	
+
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Customer person = new Customer(10);
+		Factory Samsung = new Factory(50);
+		
+		
+		person.show();
+		Samsung.show();
+		System.out.println();
+		
+		person.order(30,Samsung);
+		person.show();
+		Samsung.show();
+		System.out.println();
+		
+		person.order(40,Samsung);
+		person.show();
+		Samsung.show();
+	}
+
+}
